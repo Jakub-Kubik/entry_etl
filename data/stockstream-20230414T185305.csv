@@ -1,0 +1,65 @@
+productId,productOptionId,modifiedDate,styleCode,code,barcode,branchId,branchName,productName,option1,option2,option3,size,available,stockOnHand,openSales,incoming,virtual,holding
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-36,7100000000000,3,Main Branch,Apparel Item,Black,,,36,27.0,27.0,0.0,4.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-37,7100000000017,3,Main Branch,Apparel Item,Black,,,37,66.0,66.0,0.0,10.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-38,7100000000024,3,Main Branch,Apparel Item,Black,,,38,118.0,118.0,0.0,18.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-39,7100000000031,3,Main Branch,Apparel Item,Black,,,39,118.0,118.0,0.0,18.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-40,7100000000048,3,Main Branch,Apparel Item,Black,,,40,131.0,131.0,0.0,20.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-41,7100000000055,3,Main Branch,Apparel Item,Black,,,41,1.0,1.0,0.0,0.0,0.0,0.0
+4,5,2023-04-14T15:00:25Z,Apparel,Apparel-42,7100000000062,3,Main Branch,Apparel Item,Black,,,42,1.0,1.0,0.0,0.0,0.0,0.0
+9,12,2023-04-14T15:00:25Z,,Z12,,3,Main Branch,Niť,,,,,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-36,,3,Main Branch,ponozky,modrý,,,36,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-37,,3,Main Branch,ponozky,modrý,,,37,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-38,,3,Main Branch,ponozky,modrý,,,38,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-39,,3,Main Branch,ponozky,modrý,,,39,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-40,,3,Main Branch,ponozky,modrý,,,40,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-41,,3,Main Branch,ponozky,modrý,,,41,0.0,0.0,0.0,0.0,0.0,0.0
+10,13,2023-04-14T15:00:25Z,,Z13-42,,3,Main Branch,ponozky,modrý,,,42,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-36,,3,Main Branch,ponozky,černý,,,36,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-37,,3,Main Branch,ponozky,černý,,,37,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-38,,3,Main Branch,ponozky,černý,,,38,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-39,,3,Main Branch,ponozky,černý,,,39,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-40,,3,Main Branch,ponozky,černý,,,40,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-41,,3,Main Branch,ponozky,černý,,,41,0.0,0.0,0.0,0.0,0.0,0.0
+10,14,2023-04-14T15:00:25Z,,Z14-42,,3,Main Branch,ponozky,černý,,,42,0.0,0.0,0.0,0.0,0.0,0.0
+3,4,2023-04-14T14:57:14Z,Standard,Standard,,3,Main Branch,Standard (FIFO) Product,,,,,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XS,,3,Main Branch,barefoot,Green,,,XS,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-S,,3,Main Branch,barefoot,Green,,,S,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-M,,3,Main Branch,barefoot,Green,,,M,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-L,,3,Main Branch,barefoot,Green,,,L,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XL,,3,Main Branch,barefoot,Green,,,XL,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XXL,,3,Main Branch,barefoot,Green,,,XXL,0.0,0.0,0.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XS,,9,Prvni pivni,barefoot,Green,,,XS,-115.0,200.0,315.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-S,,9,Prvni pivni,barefoot,Green,,,S,-60.0,300.0,360.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-M,,9,Prvni pivni,barefoot,Green,,,M,25.0,400.0,375.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-L,,9,Prvni pivni,barefoot,Green,,,L,135.0,500.0,365.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XL,,9,Prvni pivni,barefoot,Green,,,XL,150.0,300.0,150.0,0.0,0.0,0.0
+12,17,2023-04-14T14:55:44Z,,BAREF-GREEN-XXL,,9,Prvni pivni,barefoot,Green,,,XXL,10.0,100.0,90.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XS,,9,Prvni pivni,barefoot,Black,,,XS,-100.0,200.0,300.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-S,,9,Prvni pivni,barefoot,Black,,,S,-60.0,300.0,360.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-M,,9,Prvni pivni,barefoot,Black,,,M,25.0,400.0,375.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-L,,9,Prvni pivni,barefoot,Black,,,L,135.0,500.0,365.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XL,,9,Prvni pivni,barefoot,Black,,,XL,150.0,300.0,150.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XXL,,9,Prvni pivni,barefoot,Black,,,XXL,10.0,100.0,90.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XS,,3,Main Branch,barefoot,Black,,,XS,0.0,0.0,0.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-S,,3,Main Branch,barefoot,Black,,,S,0.0,0.0,0.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-M,,3,Main Branch,barefoot,Black,,,M,0.0,0.0,0.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-L,,3,Main Branch,barefoot,Black,,,L,0.0,0.0,0.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XL,,3,Main Branch,barefoot,Black,,,XL,0.0,0.0,0.0,0.0,0.0,0.0
+12,18,2023-04-14T14:55:44Z,,BAREF-BLACK-XXL,,3,Main Branch,barefoot,Black,,,XXL,0.0,0.0,0.0,0.0,0.0,0.0
+11,15,2023-04-14T14:54:28Z,StyleCode,830,86545616,3,Main Branch,pedro,green,,,,0.0,0.0,0.0,0.0,0.0,0.0
+11,15,2023-04-14T14:54:28Z,StyleCode,830,86545616,9,Prvni pivni,pedro,green,,,,-1.0,33.0,34.0,0.0,0.0,0.0
+8,11,2023-04-14T14:50:15Z,,K0001,K000100000000,3,Main Branch,Knoflik,,,,,0.0,0.0,0.0,0.0,0.0,0.0
+7,10,2023-04-14T14:49:47Z,SP01,SP1-B,654987322,3,Main Branch,Sponka,,,,,250.0,250.0,0.0,3.0,0.0,0.0
+7,10,2023-04-14T14:49:47Z,SP01,SP1-B,654987322,9,Prvni pivni,Sponka,,,,,-32.0,0.0,32.0,150.0,0.0,0.0
+5,6,2023-04-14T14:43:16Z,,TEST11111-1,700700700,3,Main Branch,Test1,label1,,,,96.0,96.0,0.0,15.0,0.0,0.0
+5,6,2023-04-14T14:43:16Z,,TEST11111-1,700700700,9,Prvni pivni,Test1,label1,,,,-1.0,0.0,1.0,0.0,0.0,0.0
+11,16,2023-04-14T14:42:04Z,StyleCode,831,86545615,3,Main Branch,pedro,red,,,,0.0,0.0,0.0,0.0,0.0,0.0
+11,16,2023-04-14T14:42:04Z,StyleCode,831,86545615,9,Prvni pivni,pedro,red,,,,0.0,21.0,21.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-XS,,9,Prvni pivni,barefoot,White,,,XS,-100.0,200.0,300.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-S,,9,Prvni pivni,barefoot,White,,,S,-60.0,300.0,360.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-M,,9,Prvni pivni,barefoot,White,,,M,25.0,400.0,375.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-L,,9,Prvni pivni,barefoot,White,,,L,85.0,500.0,415.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-XL,,9,Prvni pivni,barefoot,White,,,XL,90.0,300.0,210.0,0.0,0.0,0.0
+12,19,2023-01-28T21:13:05Z,,BAREF-WHITE-XXL,,9,Prvni pivni,barefoot,White,,,XXL,10.0,100.0,90.0,0.0,0.0,0.0
+5,7,2022-09-26T11:30:22Z,,TEST11111-2,700700701,3,Main Branch,Test1,label1,,,,48.0,48.0,0.0,20.0,0.0,0.0
+7,9,2022-05-27T16:22:33Z,SP01,SP1-A,654987321,3,Main Branch,Sponka,,,,,250.0,250.0,0.0,12.0,0.0,0.0
