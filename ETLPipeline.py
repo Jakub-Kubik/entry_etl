@@ -6,46 +6,105 @@ import pandas as pd
 
 
 class ETLPipeline:
+    """ETL Pipeline for processing various CSV files."""
+
     def __init__(self):
+        """Initialize the ETL Pipeline with a database connection and logging."""
         self.con = duckdb.connect(database="mydata.db", read_only=False)
         logging.basicConfig(level=logging.INFO)
 
-    def extract(self, file_path: str) -> pd.DataFrame:
+    @staticmethod
+    def __extract(file_path: str) -> pd.DataFrame:
+        """Extract data from the given file path.
+
+        Args:
+            file_path: Path to the CSV file.
+
+        Returns:
+            DataFrame containing the extracted data.
+        """
         return pd.read_csv(file_path)
 
-    def transform_contacts(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _transform_contacts(df: pd.DataFrame) -> pd.DataFrame:
+        """Transform Contacts data.
+
+        Args:
+            df: DataFrame containing Contacts data.
+
+        Returns:
+            DataFrame with transformed data.
+        """
         df.drop_duplicates(subset=["type", "company", "firstName"], inplace=True)
-        # Keep only rows where isActive is True
         df = df[df["isActive"]]
-        # Fill missing values with "Unknown"
         df.fillna("Unknown", inplace=True)
         return df
 
-    def transform_products(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _transform_products(df: pd.DataFrame) -> pd.DataFrame:
+        """Transform Products data.
+
+        Args:
+            df: DataFrame containing Products data.
+
+        Returns:
+            DataFrame with transformed data.
+        """
         df.drop_duplicates(subset=["name", "status"], inplace=True)
-        # Fill missing values with "Unknown"
         df.fillna("Unknown", inplace=True)
         return df
 
-    def transform_purchase_orders(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _transform_purchase_orders(df: pd.DataFrame) -> pd.DataFrame:
+        """Transform Purchase Orders data.
+
+        Args:
+            df: DataFrame containing Purchase Orders data.
+
+        Returns:
+            DataFrame with transformed data.
+        """
         df.drop_duplicates(inplace=True)
-        # Fill missing values with "Unknown"
         df.fillna("Unknown", inplace=True)
         return df
 
-    def transform_sale_orders(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _transform_sale_orders(df: pd.DataFrame) -> pd.DataFrame:
+        """Transform Sale Orders data.
+
+        Args:
+            df: DataFrame containing Sale Orders data.
+
+        Returns:
+            DataFrame with transformed data.
+        """
         df.drop_duplicates(inplace=True)
-        # Fill missing values with "Unknown"
         df.fillna("Unknown", inplace=True)
         return df
 
-    def transform_stockstream(self, df: pd.DataFrame) -> pd.DataFrame:
+    @staticmethod
+    def _transform_stockstream(df: pd.DataFrame) -> pd.DataFrame:
+        """Transform Stockstream data.
+
+        Args:
+            df: DataFrame containing Stockstream data.
+
+        Returns:
+            DataFrame with transformed data.
+        """
         df.drop_duplicates(inplace=True)
-        # Fill missing values with "Unknown"
         df.fillna("Unknown", inplace=True)
         return df
 
-    def table_exists(self, table_name: str) -> bool:
+    def _table_exists(self, table_name: str) -> bool:
+        """Check if a table exists in the database.
+
+        Args:
+            table_name: Name of the table.
+
+        Returns:
+            True if the table exists, False otherwise.
+        """
         query = f"SELECT 1 FROM (SELECT * FROM {table_name}) AS _ LIMIT 0"
         try:
             self.con.execute(query)
@@ -53,20 +112,19 @@ class ETLPipeline:
         except Exception:
             return False
 
-    def load(self, df: pd.DataFrame, table_name: str) -> None:
+    def __load(self, df: pd.DataFrame, table_name: str) -> None:
+        """Load the transformed data into the specified table.
+
+        Args:
+            df: DataFrame containing the data to load.
+            table_name: Name of the table to load the data into.
+        """
         # Check if the table already exists
-        if self.table_exists(table_name):
+        if self._table_exists(table_name):
             logging.warning(f"Table {table_name} already exists. Skip table creation. Only override data.")
-            # Register the DataFrame as a temporary table
             self.con.register(f"temp_{table_name}", df)
-
-            # Delete previous content in the table
             self.con.execute(f"DELETE FROM {table_name}")
-
-            # Insert data into the actual table
             self.con.execute(f"INSERT INTO {table_name} SELECT * FROM temp_{table_name}")
-
-            # Unregister the temporary table
             self.con.unregister(f"temp_{table_name}")
             return
 
@@ -75,20 +133,19 @@ class ETLPipeline:
         self.con.unregister(table_name)
 
     def process(self, files: Dict[str, str]) -> None:
+        """Process the specified files using the ETL Pipeline.
+
+        Args:
+            files: Dictionary containing table names and corresponding file paths.
+        """
         for table_name, file_path in files.items():
-            # Extract
-            raw_data = self.extract(file_path)
-
-            # Transform
-            transform_method: Callable[[pd.DataFrame], pd.DataFrame] = getattr(self, f"transform_{table_name}")
+            raw_data = self.__extract(file_path)
+            transform_method: Callable[[pd.DataFrame], pd.DataFrame] = getattr(self, f"_transform_{table_name}")
             cleaned_data = transform_method(raw_data)
-
-            # Load
-            self.load(cleaned_data, table_name)
+            self.__load(cleaned_data, table_name)
 
 
 files = {
-    # no need to process contact_suplier because it is stored in contacts
     "contacts": "data/contacts-20230414T185305.csv",
     "products": "data/products-20230414T185305.csv",
     "purchase_orders": "data/purchase_orders-20230414T185305.csv",
