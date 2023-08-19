@@ -1,0 +1,11 @@
+id,createdDate,modifiedDate,isActive,type,company,firstName,lastName,jobTitle,email,website,phone,fax,mobile,address1,address2,city,state,postCode,country,postalAddress1,postalAddress2,postalCity,postalPostCode,postalState,postalCountry,notes,integrationRef,salesPersonId,accountNumber,billingId,billingCompany,accountsFirstName,accountsLastName,billingEmail,accountsPhone,billingCostCenter,priceColumn,creditLimit,balanceOwing,group,subGroup
+22,2023-04-14T14:50:14Z,2023-04-14T14:50:14Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,Česko,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+21,2023-04-14T14:49:47Z,2023-04-14T14:49:47Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,Česko,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+20,2023-04-14T14:46:20Z,2023-04-14T14:46:20Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,Česko,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+19,2023-04-14T14:45:42Z,2023-04-14T14:45:42Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,Česko,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+18,2023-04-14T14:44:49Z,2023-04-14T14:44:49Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,Česko,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+17,2023-04-14T14:38:41Z,2023-04-14T14:38:41Z,True,Supplier,Kulicka Tomas Marny,,,,,,,,,,,,,,,,,,,,,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+8,2021-04-13T11:26:04Z,2021-04-13T11:26:04Z,True,Supplier,Pruziny s.r.o,Skoc,Dopole,,,,,,,,,,,,,,,,,,,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+7,2021-04-13T11:15:56Z,2021-04-13T11:15:56Z,True,Supplier,Kulicka,Tomas,Marny,,,,,,,,,,,,,,,,,,,,,0,,0,,,,,,,CostUSD,0.0,0.0,,
+4,2021-04-13T10:54:48Z,2021-04-13T10:56:59Z,True,Supplier,Kolo s.r.o.,John,Doo,,,,,,,,,,,,,,,,,,,,,73381,,0,,,,,,,WholesaleUSD,0.0,0.0,,
+2,2015-03-09T22:36:40Z,2016-03-22T21:04:53Z,False,Supplier,Cash Supplier,,,,,,,,,,,,,,,,,,,,,,,0,,0,,,,,,,,0.0,0.0,,
