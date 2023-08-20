@@ -3,6 +3,34 @@ import logging
 import duckdb
 import pandas as pd
 
+raw_data_files = {
+    # no need to process contact suplier because it is part of contacts
+    "contacts": {
+        "file_path": "data/contacts-20230414T185305.csv",
+        "transformation_config": {
+            "duplicates_subset": ["type", "company", "firstName"],
+            "fillna_value": "Unknown",
+            "filter_active": True,
+        },
+    },
+    "products": {
+        "file_path": "data/products-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": ["name", "status"], "fillna_value": "Unknown"},
+    },
+    "purchase_orders": {
+        "file_path": "data/purchase_orders-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
+    "sale_orders": {
+        "file_path": "data/sale_order-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
+    "stockstream": {
+        "file_path": "data/stockstream-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
+}
+
 
 class ETLPipeline:
     """ETL Pipeline for processing various CSV files."""
@@ -79,7 +107,7 @@ class ETLPipeline:
         self.con.execute(f"CREATE TABLE {table_name} AS SELECT * FROM {table_name}")
         self.con.unregister(table_name)
 
-    def process(self, files: dict) -> None:
+    def process(self, files: dict = raw_data_files) -> None:
         """Process the specified files using the ETL Pipeline.
 
         Args:
@@ -91,35 +119,3 @@ class ETLPipeline:
             raw_data = self._extract(config["file_path"])
             cleaned_data = self._transform(raw_data, config["transformation_config"])
             self._load(cleaned_data, table_name)
-
-
-files = {
-    "contacts": {
-        "file_path": "data/contacts-20230414T185305.csv",
-        "transformation_config": {
-            "duplicates_subset": ["type", "company", "firstName"],
-            "fillna_value": "Unknown",
-            "filter_active": True,
-        },
-    },
-    "products": {
-        "file_path": "data/products-20230414T185305.csv",
-        "transformation_config": {"duplicates_subset": ["name", "status"], "fillna_value": "Unknown"},
-    },
-    "purchase_orders": {
-        "file_path": "data/purchase_orders-20230414T185305.csv",
-        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
-    },
-    "sale_orders": {
-        "file_path": "data/sale_order-20230414T185305.csv",
-        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
-    },
-    "stockstream": {
-        "file_path": "data/stockstream-20230414T185305.csv",
-        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
-    },
-}
-
-
-pipeline = ETLPipeline()
-pipeline.process(files)
