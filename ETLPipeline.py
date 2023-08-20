@@ -1,5 +1,4 @@
 import logging
-from typing import Callable, Dict
 
 import duckdb
 import pandas as pd
@@ -25,75 +24,23 @@ class ETLPipeline:
         logging.info(f"Extracting data from {file_path}")
         return pd.read_csv(file_path)
 
-    def _transform_contacts(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transform Contacts data.
+    def _transform(self, df: pd.DataFrame, transformation_config: dict) -> pd.DataFrame:
+        """Apply transformations to the given DataFrame.
 
         Args:
-            df: DataFrame containing Contacts data.
+            df: DataFrame containing the data.
+            transformation_config: Dictionary containing transformation rules.
 
         Returns:
             DataFrame with transformed data.
         """
-        logging.info("Transforming Contacts data")
-        df.drop_duplicates(subset=["type", "company", "firstName"], inplace=True)
-        df = df[df["isActive"]]
-        df.fillna("Unknown", inplace=True)
-        return df
-
-    def _transform_products(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transform Products data.
-
-        Args:
-            df: DataFrame containing Products data.
-
-        Returns:
-            DataFrame with transformed data.
-        """
-        logging.info("Transforming Products data")
-        df.drop_duplicates(subset=["name", "status"], inplace=True)
-        df.fillna("Unknown", inplace=True)
-        return df
-
-    def _transform_purchase_orders(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transform Purchase Orders data.
-
-        Args:
-            df: DataFrame containing Purchase Orders data.
-
-        Returns:
-            DataFrame with transformed data.
-        """
-        logging.info("Transforming Purchase Orders data")
-        df.drop_duplicates(inplace=True)
-        df.fillna("Unknown", inplace=True)
-        return df
-
-    def _transform_sale_orders(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transform Sale Orders data.
-
-        Args:
-            df: DataFrame containing Sale Orders data.
-
-        Returns:
-            DataFrame with transformed data.
-        """
-        logging.info("Transforming Sale Orders data")
-        df.drop_duplicates(inplace=True)
-        df.fillna("Unknown", inplace=True)
-        return df
-
-    def _transform_stockstream(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Transform Stockstream data.
-
-        Args:
-            df: DataFrame containing Stockstream data.
-
-        Returns:
-            DataFrame with transformed data.
-        """
-        logging.info("Transforming Stockstream data")
-        df.drop_duplicates(inplace=True)
-        df.fillna("Unknown", inplace=True)
+        logging.info("Transforming data")
+        if transformation_config.get("duplicates_subset"):
+            df.drop_duplicates(subset=transformation_config["duplicates_subset"], inplace=True)
+        if transformation_config.get("fillna_value"):
+            df.fillna(transformation_config["fillna_value"], inplace=True)
+        if transformation_config.get("filter_active"):
+            df = df[df["isActive"]]
         return df
 
     def _table_exists(self, table_name: str) -> bool:
@@ -132,28 +79,47 @@ class ETLPipeline:
         self.con.execute(f"CREATE TABLE {table_name} AS SELECT * FROM {table_name}")
         self.con.unregister(table_name)
 
-    def process(self, files: Dict[str, str]) -> None:
+    def process(self, files: dict) -> None:
         """Process the specified files using the ETL Pipeline.
 
         Args:
-            files: Dictionary containing table names and corresponding file paths.
+            files: Dictionary containing table names and corresponding file paths and transformation rules.
         """
         logging.info("Starting the ETL process")
-        for table_name, file_path in files.items():
-            logging.info(f"Processing {table_name} from {file_path}")
-            raw_data = self._extract(file_path)
-            transform_method: Callable[[pd.DataFrame], pd.DataFrame] = getattr(self, f"_transform_{table_name}")
-            cleaned_data = transform_method(raw_data)
+        for table_name, config in files.items():
+            logging.info(f"Processing {table_name} from {config['file_path']}")
+            raw_data = self._extract(config["file_path"])
+            cleaned_data = self._transform(raw_data, config["transformation_config"])
             self._load(cleaned_data, table_name)
 
 
 files = {
-    "contacts": "data/contacts-20230414T185305.csv",
-    "products": "data/products-20230414T185305.csv",
-    "purchase_orders": "data/purchase_orders-20230414T185305.csv",
-    "sale_orders": "data/sale_order-20230414T185305.csv",
-    "stockstream": "data/stockstream-20230414T185305.csv",
+    "contacts": {
+        "file_path": "data/contacts-20230414T185305.csv",
+        "transformation_config": {
+            "duplicates_subset": ["type", "company", "firstName"],
+            "fillna_value": "Unknown",
+            "filter_active": True,
+        },
+    },
+    "products": {
+        "file_path": "data/products-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": ["name", "status"], "fillna_value": "Unknown"},
+    },
+    "purchase_orders": {
+        "file_path": "data/purchase_orders-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
+    "sale_orders": {
+        "file_path": "data/sale_order-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
+    "stockstream": {
+        "file_path": "data/stockstream-20230414T185305.csv",
+        "transformation_config": {"duplicates_subset": None, "fillna_value": "Unknown"},
+    },
 }
+
 
 pipeline = ETLPipeline()
 pipeline.process(files)
