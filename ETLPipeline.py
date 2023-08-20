@@ -122,4 +122,3 @@ files = {
 
 
 pipeline = ETLPipeline()
-pipeline.process(files)
