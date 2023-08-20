@@ -1,0 +1,23 @@
+version: "3"
+services:
+  duckdb:
+    build:
+      context: .
+      dockerfile: DuckDB.Dockerfile
+    volumes:
+      - duckdb_data:/duckdb_data
+
+  etl_pipeline:
+    build:
+      context: .
+      dockerfile: App.Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - duckdb
+    command: ["python", "run.py"] # Running the ETL script directly from here
+
+volumes:
+  duckdb_data:
